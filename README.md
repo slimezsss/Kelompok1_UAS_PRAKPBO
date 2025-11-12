@@ -1,2 +1,2 @@
 # Kelompok1_UAS_PRAKPBO
-UTS Praktikum Pemrograman Berorientasi Objek
+UAS Praktikum Pemrograman Berorientasi Objek
