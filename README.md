@@ -30,7 +30,7 @@ Fitur tambahan:
 
 ## 📖 Daftar Isi
 1. [Screenshot GUI](#-screenshot-gui)
-2. [UML Class Diagram](#-uml-class-diagram)
+2. [Class Diagram](#-class-diagram)
 3. [Fitur Utama](#-fitur-utama)
 4. [Cara Run](#-cara-run)
 5. [Struktur Folder](#-struktur-folder)
@@ -41,21 +41,21 @@ Fitur tambahan:
 > Beberapa tampilan GUI DailyMart
 
 - **Login**
-![Login](screenshots/login.png)  
+![WhatsApp Image 2025-11-25 at 02 04 47_1e44988d](https://github.com/user-attachments/assets/9ac72aaf-a913-4132-aa1b-2d06ab55db27)
 
 - **Dashboard Admin**
-![Admin](screenshots/admin.png)  
+  <img width="1536" height="864" alt="Screenshot_2025-11-25_01_34_24 1" src="https://github.com/user-attachments/assets/82a42011-2135-4e36-be29-b8157fc632a5" />
+  
 
 - **Dashboard Customer**
-![Customer](screenshots/customer.png)  
+  <img width="1536" height="864" alt="Screenshot_2025-11-25_01_34_02 1" src="https://github.com/user-attachments/assets/a4733837-d5f1-418f-8b25-579f8b46facb" />
 
-- **FlashSale & Keranjang**
-![FlashSale](screenshots/flashsale.png)  
+
 
 ---
 
 
-## 🧩 UML Class Diagram
+## 🧩 Class Diagram
 > Visualisasi Class Diagram DailyMart
 
 <img width="4626" height="3758" alt="class diagram DailyMart" src="https://github.com/user-attachments/assets/e9bd3924-c4be-4c5f-a858-30d1ccca7219" />
@@ -75,50 +75,58 @@ Fitur tambahan:
 
 
 ## 🚀 Cara Run
-1. Clone repository:  
+
+1. Masuk ke folder project
 ```bash
-git clone https://github.com/username/Kelompok1_UAS_PRAKPBO.git
+cd Kelompok1
 ```
 
-2. Masuk folder src:
+2. Compile semua file
 ```bash
-cd src
+javac -d out -cp src $(find . -name "*.java")
 ```
 
-3. Compile & jalankan program:
+3. Jalankan aplikasi
 ```bash
-javac main/Main.java
-java main.Main
+java -cp out:src Main
 ```
 
 
 ## 📁 Struktur Folder
-       src/
-    ├── main/
-    │   └── Main.java               # Menjalankan aplikasi & GUI login
-    ├── util/
-    │   └── StokHabisException.java # Exception khusus saat stok barang habis
-    ├── model/
-    │   ├── Pembayaran.java         # Interface pembayaran
-    │   ├── QRIS.java               # Implementasi pembayaran via QRIS
-    │   ├── Bank.java               # Implementasi pembayaran via Bank
-    │   ├── COD.java                # Implementasi pembayaran COD
-    │   ├── Akun.java               # Class abstrak akun (Admin/Customer)
-    │   ├── Admin.java              # Data & metode admin
-    │   ├── Customer.java           # Data & metode customer
-    │   ├── Member.java             # Customer member & sistem poin
-    │   ├── Barang.java             # Class abstrak barang
-    │   ├── Makanan.java            # Kategori makanan
-    │   ├── Minuman.java            # Kategori minuman
-    │   ├── Kesehatan.java          # Kategori kesehatan
-    │   ├── Perawatan.java          # Kategori perawatan
-    │   ├── RumahTangga.java        # Kategori rumah tangga
-    │   ├── ListBarang.java         # Menyimpan daftar semua barang
-    │   └── Promo.java              # Class promo / flashsale
-    └── view/
-        ├── LoginFrame.java         # GUI login
-        ├── AdminFrame.java         # GUI dashboard admin
-        └── CustomerFrame.java      # GUI dashboard customer
-    
-    
-    
+       Kelompok1/
+       │
+       ├── Main.java
+       │
+       ├── model/
+       │   ├── Admin.java
+       │   ├── Akun.java
+       │   ├── Bank.java
+       │   ├── Barang.java
+       │   ├── BarangWithImage.java
+       │   ├── COD.java
+       │   ├── Customer.java
+       │   ├── DataStore.java
+       │   ├── Kesehatan.java
+       │   ├── ListBarang.java
+       │   ├── Makanan.java
+       │   ├── Member.java
+       │   ├── Minuman.java
+       │   ├── Pembayaran.java
+       │   ├── Perawatan.java
+       │   ├── Promo.java
+       │   ├── QRIS.java
+       │   ├── RumahTangga.java
+       │   └── Transaksi.java
+       │
+       ├── util/
+       │   └── StokHabisException.java
+       │
+       ├── view/
+       │   ├── AdminFrame.java
+       │   ├── CustomerFrame.java
+       │   ├── LoginFrame.java
+       │   └── RegisterFrame.java
+       │
+       └── src/
+           └── image/
+               └── default-barang.png
