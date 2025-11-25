@@ -13,7 +13,7 @@ public abstract class Barang {
         this.stok = stok;
     }
 
-    // Abstract Method
+    // Abstract Method Wajib
     public abstract String getKategori();
     public abstract String getDetailKhusus();
 
