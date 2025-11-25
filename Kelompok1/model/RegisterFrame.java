@@ -97,4 +97,5 @@ public class RegisterFrame extends JFrame {
             dispose();
         });
     }
+
 }
