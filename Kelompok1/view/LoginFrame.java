@@ -1,56 +1,68 @@
 package view;
-import java.awt.*;
-import javax.swing.*;
 import model.*;
+import javax.swing.*;
+import java.awt.*;
 
 public class LoginFrame extends JFrame {
     public LoginFrame() {
-        setTitle("Login System");
-        setSize(400, 300);
+        setTitle("Login Daily Mart");
+        setSize(400, 350);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
-        JPanel panel = new JPanel(new GridLayout(4, 1, 10, 10));
+        JPanel panel = new JPanel(new GridLayout(5, 1, 10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
+        panel.setBackground(Color.WHITE);
         
-        JLabel lbl = new JLabel("DAILY MART LOGIN", SwingConstants.CENTER);
-        lbl.setFont(new Font("Arial", Font.BOLD, 18));
+        JLabel lbl = new JLabel("LOGIN", SwingConstants.CENTER);
+        lbl.setFont(new Font("SansSerif", Font.BOLD, 20));
+        lbl.setForeground(new Color(3, 172, 14));
         
         JTextField txtUser = new JTextField();
         txtUser.setBorder(BorderFactory.createTitledBorder("Username"));
+        
         JPasswordField txtPass = new JPasswordField();
         txtPass.setBorder(BorderFactory.createTitledBorder("Password"));
         
         JButton btnLogin = new JButton("MASUK");
-        btnLogin.setBackground(new Color(34, 139, 34));
+        btnLogin.setBackground(new Color(3, 172, 14));
         btnLogin.setForeground(Color.WHITE);
-
-        JButton btnRegister = new JButton("Register");
-        btnRegister.addActionListener(e -> {
-            new RegisterFrame().setVisible(true);
-            dispose();
-        });
-        panel.add(btnRegister);
+        btnLogin.setFont(new Font("SansSerif", Font.BOLD, 14));
+        btnLogin.setFocusPainted(false);
         
-        panel.add(lbl); panel.add(txtUser); panel.add(txtPass); panel.add(btnLogin);
+        // Tombol Menuju Register
+        JButton btnReg = new JButton("Belum punya akun? Daftar");
+        btnReg.setContentAreaFilled(false);
+        btnReg.setBorderPainted(false);
+        btnReg.setForeground(Color.BLUE);
+        btnReg.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        panel.add(lbl); panel.add(txtUser); panel.add(txtPass); panel.add(btnLogin); panel.add(btnReg);
         add(panel);
 
+        // Logic Login
         btnLogin.addActionListener(e -> {
             String u = txtUser.getText();
             String p = new String(txtPass.getPassword());
-            boolean ok = false;
+            boolean found = false;
             
             for(Akun a : DataStore.listAkun) {
                 if(a.login(u, p)) {
                     DataStore.currentUser = a;
-                    ok = true;
+                    found = true;
                     dispose();
                     if(a instanceof Admin) new AdminFrame().setVisible(true);
                     else new CustomerFrame().setVisible(true);
                     break;
                 }
             }
-            if(!ok) JOptionPane.showMessageDialog(this, "Gagal Login!");
+            if(!found) JOptionPane.showMessageDialog(this, "Gagal Login! Akun tidak ditemukan.");
+        });
+
+        // Logic Pindah ke Register
+        btnReg.addActionListener(e -> {
+            new RegisterFrame().setVisible(true);
+            dispose();
         });
     }
 }
