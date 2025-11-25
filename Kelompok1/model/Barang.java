@@ -27,3 +27,4 @@ public abstract class Barang {
     public void setHarga(double h) { this.harga = h; }
 
 }
+
