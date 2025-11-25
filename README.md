@@ -83,50 +83,48 @@ cd Kelompok1
 
 2. Compile semua file
 ```bash
-javac -d out -cp src $(find . -name "*.java")
+javac */*.java main/*.java model/*.java view/*.java util/*.java
 ```
 
 3. Jalankan aplikasi
 ```bash
-java -cp out:src Main
+java main.Main
 ```
 
 
 ## 📁 Struktur Folder
        Kelompok1/
-       │
-       ├── Main.java
-       │
-       ├── model/
-       │   ├── Admin.java
-       │   ├── Akun.java
-       │   ├── Bank.java
-       │   ├── Barang.java
-       │   ├── BarangWithImage.java
-       │   ├── COD.java
-       │   ├── Customer.java
-       │   ├── DataStore.java
-       │   ├── Kesehatan.java
-       │   ├── ListBarang.java
-       │   ├── Makanan.java
-       │   ├── Member.java
-       │   ├── Minuman.java
-       │   ├── Pembayaran.java
-       │   ├── Perawatan.java
-       │   ├── Promo.java
-       │   ├── QRIS.java
-       │   ├── RumahTangga.java
-       │   └── Transaksi.java
-       │
-       ├── util/
-       │   └── StokHabisException.java
-       │
-       ├── view/
-       │   ├── AdminFrame.java
-       │   ├── CustomerFrame.java
-       │   ├── LoginFrame.java
-       │   └── RegisterFrame.java
-       │
-       └── src/
-           └── image/
-               └── default-barang.png
+        │
+        ├── main/
+        │   └── Main.java                <-- (Entry Point & Data Seeding)
+        │
+        ├── model/                       <-- (Logika Bisnis & Data)
+        │   ├── Akun.java                <-- (Abstract Parent User)
+        │   ├── Admin.java
+        │   ├── Customer.java
+        │   ├── Member.java              <-- (Logika Poin Member)
+        │   │
+        │   ├── Barang.java              <-- (Abstract Parent Barang)
+        │   ├── Makanan.java             <-- (Detail: Expired, Halal)
+        │   ├── Minuman.java             <-- (Detail: Volume)
+        │   ├── Kesehatan.java           <-- (Detail: Resep Dokter)
+        │   ├── Perawatan.java           <-- (Detail: Merk)
+        │   ├── RumahTangga.java         <-- (Detail: Kegunaan)
+        │   │
+        │   ├── Pembayaran.java          <-- (Interface)
+        │   ├── QRIS.java
+        │   ├── Bank.java
+        │   ├── COD.java
+        │   │
+        │   ├── Transaksi.java           <-- (Objek Riwayat Belanja)
+        │   ├── Promo.java               <-- (Logika Diskon Flash Sale)
+        │   └── DataStore.java           <-- (Database In-Memory Global)
+        │
+        ├── view/                        <-- (Tampilan GUI Swing)
+        │   ├── LoginFrame.java          <-- (Halaman Login)
+        │   ├── RegisterFrame.java       <-- (Halaman Daftar Akun Baru)
+        │   ├── AdminFrame.java          <-- (Dashboard Admin & CRUD Barang)
+        │   └── CustomerFrame.java       <-- (Katalog Belanja, Keranjang, Struk)
+        │
+        └── util/                        <-- (Helper & Error Handling)
+            └── StokHabisException.java  <-- (Custom Exception)
