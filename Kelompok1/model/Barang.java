@@ -25,4 +25,5 @@ public abstract class Barang {
     public void setStok(int s) { this.stok = s; }
     public void setNama(String n) { this.nama = n; }
     public void setHarga(double h) { this.harga = h; }
+
 }
